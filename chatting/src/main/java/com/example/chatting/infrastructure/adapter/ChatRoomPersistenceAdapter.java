@@ -18,6 +18,10 @@ public class ChatRoomPersistenceAdapter implements CreateChatRoomPort {
     @Transactional
     @Override
     public Long createChatRoom(ChatRoom chatRoom) {
-        return chatRoomRepository.count();
+        ChatRoomJpaEntity chatRoomJpaEntity = ChatRoomJpaEntity.builder()
+                .createdAt(LocalDateTime.now())
+                .build();
+        ChatRoomJpaEntity savedEntity = chatRoomRepository.save(chatRoomJpaEntity);
+        return savedEntity.getChatRoomId();
     }
 }
