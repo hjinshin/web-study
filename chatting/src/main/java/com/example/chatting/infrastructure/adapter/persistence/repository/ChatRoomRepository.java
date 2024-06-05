@@ -16,4 +16,5 @@ public interface ChatRoomRepository extends JpaRepository<ChatRoomJpaEntity, Lon
     long countByCreatedAtBetween(LocalDateTime startDate, LocalDateTime endDate);
 
     Slice<ChatRoomJpaEntity> findAllBy(Pageable pageable);
+
 }
